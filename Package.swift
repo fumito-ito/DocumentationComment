@@ -13,7 +13,7 @@ let package = Package(
             targets: ["DocumetationComment"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-markdown.git", revision: "d91b618"),
+        .package(url: "https://github.com/fumito-ito/swift-markdown.git", from: "510.0.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
