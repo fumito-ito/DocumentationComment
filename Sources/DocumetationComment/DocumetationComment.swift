@@ -5,6 +5,7 @@ import Markdown
 import Foundation
 
 public struct DocumentationComment {
+    public let raw: String
     public let abstract: Abstract?
     public let description: Description?
     public let parameters: [Parameter]
@@ -13,6 +14,7 @@ public struct DocumentationComment {
     public let fieldExtensions: [FieldExtension]
 
     init(
+        raw: String,
         abstract: Abstract?,
         description: Description?,
         parameters: [Parameter],
@@ -20,6 +22,7 @@ public struct DocumentationComment {
         throws: [Throws],
         fieldExtensions: [FieldExtension]
     ) {
+        self.raw = raw
         self.abstract = abstract
         self.description = description
         self.parameters = parameters
@@ -44,6 +47,7 @@ public struct DocumentationComment {
         extractor.visit(markdown)
 
         self.init(
+            raw: markdown.format(),
             abstract: extractor.abstruct,
             description: extractor.description,
             parameters: extractor.parameters,
