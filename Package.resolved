@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/fumito-ito/swift-cmark.git",
       "state" : {
-        "revision" : "3bc2f3e25df0cecc5dc269f7ccae65d0f386f06a",
-        "version" : "510.0.0"
+        "revision" : "2c47322cb32cbed555f13bf5cbfaa488cc30a785",
+        "version" : "510.0.1"
       }
     },
     {
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/fumito-ito/swift-markdown.git",
       "state" : {
-        "revision" : "94d83a56432f5865943f4c386d62910423ea8c15",
-        "version" : "510.0.0"
+        "revision" : "60d2bc5cc72b0276bcc9c3d074e751890f246426",
+        "version" : "510.0.1"
       }
     }
   ],
