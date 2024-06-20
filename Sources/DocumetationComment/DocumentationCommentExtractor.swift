@@ -32,39 +32,39 @@ struct DocumentationCommentExtractor: MarkupWalker {
     private(set) var `throws` = [Throws]()
     private(set) var fieldExtensions = [FieldExtension]()
 
-    mutating func visitParagraph(_ paragraph: Paragraph) -> () {
+    mutating func visitParagraph(_ paragraph: Paragraph) {
         note.appendIfNotEmpty(paragraph)
     }
 
-    mutating func visitHeading(_ heading: Heading) -> () {
+    mutating func visitHeading(_ heading: Heading) {
         note.appendIfNotEmpty(heading)
     }
 
-    mutating func visitCustomBlock(_ customBlock: CustomBlock) -> () {
+    mutating func visitCustomBlock(_ customBlock: CustomBlock) {
         note.appendIfNotEmpty(customBlock)
     }
 
-    mutating func visitHTMLBlock(_ html: HTMLBlock) -> () {
+    mutating func visitHTMLBlock(_ html: HTMLBlock) {
         note.appendIfNotEmpty(html)
     }
 
-    mutating func visitCodeBlock(_ codeBlock: CodeBlock) -> () {
+    mutating func visitCodeBlock(_ codeBlock: CodeBlock) {
         note.appendIfNotEmpty(codeBlock)
     }
 
-    mutating func visitBlockQuote(_ blockQuote: BlockQuote) -> () {
+    mutating func visitBlockQuote(_ blockQuote: BlockQuote) {
         note.appendIfNotEmpty(blockQuote)
     }
 
-    mutating func visitTable(_ table: Table) -> () {
+    mutating func visitTable(_ table: Table) {
         note.appendIfNotEmpty(table)
     }
 
-    mutating func visitThematicBreak(_ thematicBreak: ThematicBreak) -> () {
+    mutating func visitThematicBreak(_ thematicBreak: ThematicBreak) {
         note.appendIfNotEmpty(thematicBreak)
     }
 
-    mutating func visitListItem(_ listItem: ListItem) -> () {
+    mutating func visitListItem(_ listItem: ListItem) {
         guard listItem.isTopLevelObject else {
             return
         }

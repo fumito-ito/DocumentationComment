@@ -10,10 +10,10 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "DocumetationComment",
-            targets: ["DocumetationComment"]),
+            targets: ["DocumetationComment"])
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-markdown.git", from: "0.4.0"),
+        .package(url: "https://github.com/apple/swift-markdown.git", from: "0.4.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -21,10 +21,12 @@ let package = Package(
         .target(
             name: "DocumetationComment",
             dependencies: [
-                .product(name: "Markdown", package: "swift-markdown"),
+                .product(name: "Markdown", package: "swift-markdown")
             ]),
         .testTarget(
             name: "DocumetationCommentTests",
-            dependencies: ["DocumetationComment"]),
+            dependencies: [
+                "DocumetationComment"
+            ])
     ]
 )

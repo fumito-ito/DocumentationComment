@@ -5,12 +5,15 @@
 //  Created by 伊藤史 on 2024/04/25.
 //
 
+// swiftlint:disable file_length
 import XCTest
 import Markdown
 @testable import DocumetationComment
 
+// swiftlint:disable:next type_body_length
 final class DocumentationCommentTests: XCTestCase {
     // MARK: Constructor tests
+    // swiftlint:disable:next function_body_length
     func testInitWithAnnotationCommentLines() throws {
         let blockComment = """
         /// Returns a command that runs unconditionally before every build.
@@ -44,7 +47,10 @@ final class DocumentationCommentTests: XCTestCase {
 
         let docComment = try DocumentationComment(lines: blockCommentLines)
 
-        XCTAssertEqual(docComment.abstract?.stringify, "Returns a command that runs unconditionally before every build.")
+        XCTAssertEqual(
+            docComment.abstract?.stringify,
+            "Returns a command that runs unconditionally before every build."
+        )
         XCTAssertEqual(docComment.description?.stringify, """
         Prebuild commands can have a significant performance impact
         and should only be used when there would be no way to know the
@@ -66,7 +72,7 @@ final class DocumentationCommentTests: XCTestCase {
 
         let parameterExpect = [
             (name: "executable", description: "The absolute path to the executable to be invoked."),
-            (name: "arguments", description: "Command-line arguments to be passed to the executable."),
+            (name: "arguments", description: "Command-line arguments to be passed to the executable.")
         ]
         XCTAssertEqual(docComment.parameters.count, 2)
         docComment.parameters.enumerated().forEach { index, parameter in
@@ -80,11 +86,14 @@ final class DocumentationCommentTests: XCTestCase {
 
         XCTAssertEqual(docComment.returns.count, 1)
         let returns = try XCTUnwrap(docComment.returns.first)
-        XCTAssertEqual(returns.description, "`true` if a path from `source` to `destination` exists, `false` otherwise.")
+        XCTAssertEqual(
+            returns.description,
+            "`true` if a path from `source` to `destination` exists, `false` otherwise."
+        )
 
         let fieldExtensionsExpect = [
             (name: "attention", description: "Special attention is needed for this part."),
-            (name: "author", description: "Who is the original author of this code?"),
+            (name: "author", description: "Who is the original author of this code?")
         ]
         XCTAssertEqual(docComment.fieldExtensions.count, 2)
         docComment.fieldExtensions.enumerated().forEach { index, fieldExtension in
@@ -93,6 +102,7 @@ final class DocumentationCommentTests: XCTestCase {
         }
     }
 
+    // swiftlint:disable:next function_body_length
     func testInitWithAnnotationComment() throws {
         let blockComment = """
         /// Returns a command that runs unconditionally before every build.
@@ -125,7 +135,10 @@ final class DocumentationCommentTests: XCTestCase {
 
         let docComment = try DocumentationComment(blockComment)
 
-        XCTAssertEqual(docComment.abstract?.stringify, "Returns a command that runs unconditionally before every build.")
+        XCTAssertEqual(
+            docComment.abstract?.stringify,
+            "Returns a command that runs unconditionally before every build."
+        )
         XCTAssertEqual(docComment.description?.stringify, """
         Prebuild commands can have a significant performance impact
         and should only be used when there would be no way to know the
@@ -147,7 +160,7 @@ final class DocumentationCommentTests: XCTestCase {
 
         let parameterExpect = [
             (name: "executable", description: "The absolute path to the executable to be invoked."),
-            (name: "arguments", description: "Command-line arguments to be passed to the executable."),
+            (name: "arguments", description: "Command-line arguments to be passed to the executable.")
         ]
         XCTAssertEqual(docComment.parameters.count, 2)
         docComment.parameters.enumerated().forEach { index, parameter in
@@ -161,11 +174,14 @@ final class DocumentationCommentTests: XCTestCase {
 
         XCTAssertEqual(docComment.returns.count, 1)
         let returns = try XCTUnwrap(docComment.returns.first)
-        XCTAssertEqual(returns.description, "`true` if a path from `source` to `destination` exists, `false` otherwise.")
+        XCTAssertEqual(
+            returns.description,
+            "`true` if a path from `source` to `destination` exists, `false` otherwise."
+        )
 
         let fieldExtensionsExpect = [
             (name: "attention", description: "Special attention is needed for this part."),
-            (name: "author", description: "Who is the original author of this code?"),
+            (name: "author", description: "Who is the original author of this code?")
         ]
         XCTAssertEqual(docComment.fieldExtensions.count, 2)
         docComment.fieldExtensions.enumerated().forEach { index, fieldExtension in
@@ -174,6 +190,7 @@ final class DocumentationCommentTests: XCTestCase {
         }
     }
 
+    // swiftlint:disable:next function_body_length
     func testInitWithBlockCommentLines() throws {
         let blockComment = """
         /*
@@ -209,7 +226,10 @@ final class DocumentationCommentTests: XCTestCase {
 
         let docComment = try DocumentationComment(lines: blockCommentLines)
 
-        XCTAssertEqual(docComment.abstract?.stringify, "Returns a command that runs unconditionally before every build.")
+        XCTAssertEqual(
+            docComment.abstract?.stringify,
+            "Returns a command that runs unconditionally before every build."
+        )
         XCTAssertEqual(docComment.description?.stringify, """
         Prebuild commands can have a significant performance impact
         and should only be used when there would be no way to know the
@@ -231,7 +251,7 @@ final class DocumentationCommentTests: XCTestCase {
 
         let parameterExpect = [
             (name: "executable", description: "The absolute path to the executable to be invoked."),
-            (name: "arguments", description: "Command-line arguments to be passed to the executable."),
+            (name: "arguments", description: "Command-line arguments to be passed to the executable.")
         ]
         XCTAssertEqual(docComment.parameters.count, 2)
         docComment.parameters.enumerated().forEach { index, parameter in
@@ -245,11 +265,14 @@ final class DocumentationCommentTests: XCTestCase {
 
         XCTAssertEqual(docComment.returns.count, 1)
         let returns = try XCTUnwrap(docComment.returns.first)
-        XCTAssertEqual(returns.description, "`true` if a path from `source` to `destination` exists, `false` otherwise.")
+        XCTAssertEqual(
+            returns.description,
+            "`true` if a path from `source` to `destination` exists, `false` otherwise."
+        )
 
         let fieldExtensionsExpect = [
             (name: "attention", description: "Special attention is needed for this part."),
-            (name: "author", description: "Who is the original author of this code?"),
+            (name: "author", description: "Who is the original author of this code?")
         ]
         XCTAssertEqual(docComment.fieldExtensions.count, 2)
         docComment.fieldExtensions.enumerated().forEach { index, fieldExtension in
@@ -258,6 +281,7 @@ final class DocumentationCommentTests: XCTestCase {
         }
     }
 
+    // swiftlint:disable:next function_body_length
     func testInitWithBlockComment() throws {
         let blockComment = """
         /*
@@ -292,7 +316,10 @@ final class DocumentationCommentTests: XCTestCase {
 
         let docComment = try DocumentationComment(blockComment)
 
-        XCTAssertEqual(docComment.abstract?.stringify, "Returns a command that runs unconditionally before every build.")
+        XCTAssertEqual(
+            docComment.abstract?.stringify,
+            "Returns a command that runs unconditionally before every build."
+        )
         XCTAssertEqual(docComment.description?.stringify, """
         Prebuild commands can have a significant performance impact
         and should only be used when there would be no way to know the
@@ -314,7 +341,7 @@ final class DocumentationCommentTests: XCTestCase {
 
         let parameterExpect = [
             (name: "executable", description: "The absolute path to the executable to be invoked."),
-            (name: "arguments", description: "Command-line arguments to be passed to the executable."),
+            (name: "arguments", description: "Command-line arguments to be passed to the executable.")
         ]
         XCTAssertEqual(docComment.parameters.count, 2)
         docComment.parameters.enumerated().forEach { index, parameter in
@@ -328,11 +355,14 @@ final class DocumentationCommentTests: XCTestCase {
 
         XCTAssertEqual(docComment.returns.count, 1)
         let returns = try XCTUnwrap(docComment.returns.first)
-        XCTAssertEqual(returns.description, "`true` if a path from `source` to `destination` exists, `false` otherwise.")
+        XCTAssertEqual(
+            returns.description,
+            "`true` if a path from `source` to `destination` exists, `false` otherwise."
+        )
 
         let fieldExtensionsExpect = [
             (name: "attention", description: "Special attention is needed for this part."),
-            (name: "author", description: "Who is the original author of this code?"),
+            (name: "author", description: "Who is the original author of this code?")
         ]
         XCTAssertEqual(docComment.fieldExtensions.count, 2)
         docComment.fieldExtensions.enumerated().forEach { index, fieldExtension in
@@ -462,6 +492,7 @@ final class DocumentationCommentTests: XCTestCase {
 
     }
 
+    // swiftlint:disable:next function_body_length
     func testTrimComplexComment() throws {
         let comment = """
         /// Returns a command that runs when any of its output files are needed by
@@ -524,3 +555,4 @@ final class DocumentationCommentTests: XCTestCase {
         XCTAssertEqual(DocumentationComment.trimCommentSyntax(comment), expect)
     }
 }
+// swiftlint:enable file_length

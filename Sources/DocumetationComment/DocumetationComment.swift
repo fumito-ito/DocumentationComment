@@ -58,8 +58,11 @@ public struct DocumentationComment {
     }
 
     static func trimCommentSyntax(_ comment: String) -> String {
-        // FIXME: really want to replace only the `///(\n|\r|\r\n)` part of `///`.
-        let regex = try! Regex("(/// )|(///)|(/\\*\\n)|(\\*/)")
+        // Really want to replace only the `///(\n|\r|\r\n)` part of `///`.
+        guard let regex = try? Regex("(/// )|(///)|(/\\*\\n)|(\\*/)") else {
+            return comment
+        }
+
         return comment.replacing(regex, with: "")
     }
 }

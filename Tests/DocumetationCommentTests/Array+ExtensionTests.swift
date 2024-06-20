@@ -9,7 +9,7 @@ import XCTest
 import Markdown
 @testable import DocumetationComment
 
-final class Array_ExtensionTests: XCTestCase {
+final class ArrayExtensionTests: XCTestCase {
     func testAppendIfNotEmpty() {
         var array = [Markup]()
         let markup = Document(parsing: "- Parameter x: This is parameter x")

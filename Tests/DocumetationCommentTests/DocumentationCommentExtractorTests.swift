@@ -67,7 +67,7 @@ final class DocumentationCommentExtractorTests: XCTestCase {
 
         let parameterExpect = [
             (name: "executable", description: "The absolute path to the executable to be invoked."),
-            (name: "arguments", description: "Command-line arguments to be passed to the executable."),
+            (name: "arguments", description: "Command-line arguments to be passed to the executable.")
         ]
         XCTAssertEqual(extractor.parameters.count, 2)
         extractor.parameters.enumerated().forEach { index, parameter in
@@ -81,11 +81,11 @@ final class DocumentationCommentExtractorTests: XCTestCase {
 
         XCTAssertEqual(extractor.returns.count, 1)
         let returns = try XCTUnwrap(extractor.returns.first)
-        XCTAssertEqual(returns.description, "`true` if a path from `source` to `destination` exists, `false` otherwise.")
+        XCTAssertEqual(returns.description, "`true` if a path from `source` to `destination` exists, `false` otherwise.") // swiftlint:disable:this line_length
 
         let fieldExtensionsExpect = [
             (name: "attention", description: "Special attention is needed for this part."),
-            (name: "author", description: "Who is the original author of this code?"),
+            (name: "author", description: "Who is the original author of this code?")
         ]
         XCTAssertEqual(extractor.fieldExtensions.count, 2)
         extractor.fieldExtensions.enumerated().forEach { index, fieldExtension in

@@ -13,8 +13,11 @@ public struct Description {
     public var stringify: String {
         let text = raw.map { $0.format() }.joined()
 
-        // FIXME: なんでかわからんけど2つ目のparagraphの先頭に `\n` が複数ついてしまう
-        let regex = try! Regex("^\n*")
+        // I don't know why, but I get multiple `\n` at the beginning of the second paragraph.
+        guard let regex = try? Regex("^\n*") else {
+            return text
+        }
+
         return text.replacing(regex, with: "")
     }
 

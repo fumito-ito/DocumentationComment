@@ -12,7 +12,7 @@ public struct Parameter {
     public private(set) var raw: [Markup]
     public let name: String
     public private(set) var description: String
-    
+
     /// Append new content into this object's description
     /// - Parameter appdendix: content to append
     mutating func appendDescription(_ appdendix: [Markup]) {

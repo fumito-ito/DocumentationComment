@@ -29,7 +29,9 @@ extension ListItem {
         if trimmedText.starts(with: tag.lowercased()) {
             var newText = text.string
             if dropTag {
-                newText = String(text.string.dropFirst(text.string.count - trimmedText.count + tag.count).drop(while: { $0 == " " }))
+                newText = String(
+                    text.string.dropFirst(text.string.count - trimmedText.count + tag.count).drop(while: { $0 == " " })
+                )
             }
             return [Text(newText)] + Array(firstParagraph.inlineChildren.dropFirst(1))
         }
@@ -49,7 +51,9 @@ extension ListItem {
         guard extractTag(DocumentationTag.parameter.name) != nil else {
             return nil
         }
-        // Don't use the return value from `extractTag` here. It drops the range and source information from the markup which means that we can't present diagnostics about the parameter.
+        // Don't use the return value from `extractTag` here.
+        // It drops the range and source information from the markup which means that
+        // we can't present diagnostics about the parameter.
         return (child(at: 0) as? Paragraph)?.inlineChildren.extractParameter()
     }
 
@@ -139,12 +143,18 @@ extension ListItem {
     /// - seeAlso: ...
     /// ```
     ///
-    /// For more detail about the field extensions, see https://github.com/apple/swift/blob/main/docs/DocumentationComments.md#field-extensions
+    /// For more detail about the field extensions,
+    /// see https://github.com/apple/swift/blob/main/docs/DocumentationComments.md#field-extensions
+    ///
     /// - Returns: If the tag was matched, FieldExtension object extracted from markdown. Otherwise, return nil.
     func extractFieldExtension() -> FieldExtension? {
         for fieldExtensionTagName in FieldExtensions.allCases.map({ $0.name }) {
             if let contents = extractTag(fieldExtensionTagName + ":") {
-                return FieldExtension(raw: Array(self.children), name: fieldExtensionTagName, description: contents.map { $0.plainText }.joined(separator: " "))
+                return FieldExtension(
+                    raw: Array(self.children),
+                    name: fieldExtensionTagName,
+                    description: contents.map { $0.plainText }.joined(separator: " ")
+                )
             }
         }
 

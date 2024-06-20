@@ -9,7 +9,8 @@ import XCTest
 import Markdown
 @testable import DocumetationComment
 
-final class ListItem_ExtensionTests: XCTestCase {
+final class ListItemExtensionTests: XCTestCase {
+    // swiftlint:disable:next function_body_length
     func testExtractFieldExtension() {
         let fieldExtensionSection = """
         - Attention: Special attention is needed for this part.
@@ -50,7 +51,7 @@ final class ListItem_ExtensionTests: XCTestCase {
             (name: "invariant", description: "Describe the invariant condition of this code."),
             (name: "note", description: "Provides additional information about this operation."),
             (name: "postcondition", description: "Describe the condition that is guaranteed after this operation."),
-            (name: "precondition", description: "Describe the conditions that must be met before starting this operation."),
+            (name: "precondition", description: "Describe the conditions that must be met before starting this operation."), // swiftlint:disable:this line_length
             (name: "remark", description: "Provides additional comments or explanations."),
             (name: "remarks", description: "Provides multiple comments or explanations."),
             (name: "requires", description: "Describe the conditions required to execute this code."),
@@ -58,7 +59,7 @@ final class ListItem_ExtensionTests: XCTestCase {
             (name: "since", description: "The version in which this feature was introduced."),
             (name: "todo", description: "List any tasks that are yet to be completed for this code."),
             (name: "version", description: "The current version number of this code."),
-            (name: "warning", description: "Warns about potential problems or precautions when using this code."),
+            (name: "warning", description: "Warns about potential problems or precautions when using this code.")
         ]
 
         items!.forEach({ index, item in
@@ -85,7 +86,7 @@ final class ListItem_ExtensionTests: XCTestCase {
         let listItem = (document.child(at: 0) as? UnorderedList)?.listItems.first(where: { _ in true })
         let returns = listItem?.extractReturnDescription()
 
-        XCTAssertEqual(returns?.description, "`true` if a path from `source` to `destination` exists, `false` otherwise.")
+        XCTAssertEqual(returns?.description, "`true` if a path from `source` to `destination` exists, `false` otherwise.") // swiftlint:disable:this line_length
     }
 
     func testExtractParametersSectionWithRemainingText() throws {
@@ -159,7 +160,7 @@ final class ListItem_ExtensionTests: XCTestCase {
     }
 
     func testExtractStandaloneParameter() {
-        let singleParameter = "- Parameter displayName: An optional string to show in build logs and other status areas."
+        let singleParameter = "- Parameter displayName: An optional string to show in build logs and other status areas." // swiftlint:disable:this line_length
         let document = Document(parsing: singleParameter)
         // コンテンツは一つしか存在しないので最初のchildを見るだけで良い
         let listItem = (document.child(at: 0) as? UnorderedList)?.listItems.first(where: { _ in true })

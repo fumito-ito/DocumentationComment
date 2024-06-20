@@ -23,7 +23,9 @@ extension Sequence<InlineMarkup> {
             return nil
         }
 
-        let nameStartIndex = initialText[...colonIndex].lastIndex(of: " ").map { initialText.index(after: $0) } ?? initialText.startIndex
+        let nameStartIndex = initialText[...colonIndex]
+            .lastIndex(of: " ")
+            .map { initialText.index(after: $0) } ?? initialText.startIndex
         let parameterName = initialText[nameStartIndex..<colonIndex]
         guard !parameterName.isEmpty else {
             return nil
@@ -41,7 +43,7 @@ extension Sequence<InlineMarkup> {
             newContent
         )
     }
-    
+
     /// Return `Parameter` if `InlineMarkup` is of the form ` x: This is parameter`. Otherwise, return `nil`.
     /// 
     /// - Returns: Parameter or nil
